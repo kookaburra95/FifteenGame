@@ -23,6 +23,7 @@ namespace Fifteen
     {
         private const int size = 4;
         private Game game;
+        private bool firstGame = true;
 
         public MainWindow()
         {
@@ -52,13 +53,21 @@ namespace Fifteen
             if (game.IsSolved())
             {
                 labelMoves.Content = $"You win, {game.Moves} moves!";
+                buttonStart.IsEnabled = false;
             }
         }
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
         {
-            game.Start(1000 + DateTime.Now.DayOfYear);
-            ShowButtons();
+            if (firstGame)
+            {
+                game.Start();//1000 + DateTime.Now.DayOfYear);
+                ShowButtons();
+                buttonShuffle.IsEnabled = true;
+                firstGame = false;
+            }
+
+            buttonStart.IsEnabled = false;
         }
 
         private void HideButtons()
@@ -99,6 +108,13 @@ namespace Fifteen
             }
             
             button.IsEnabled = digit > 0;
+        }
+
+        private void buttonShuffle_Click(object sender, RoutedEventArgs e)
+        {
+            game.Shuffle();
+            ShowButtons();
+            buttonStart.IsEnabled = true;
         }
     }
 }

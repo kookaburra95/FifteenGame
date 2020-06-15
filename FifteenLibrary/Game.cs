@@ -6,6 +6,7 @@ namespace FifteenLibrary
     {
         private Map map;
         private Coordinates emptyCell;
+        private bool firstGame = true;
 
         private int size;
         public int Moves { get; set; }
@@ -16,10 +17,35 @@ namespace FifteenLibrary
             map = new Map(size);
         }
 
-        public void Start(int seed = 0)
+        public void Start()//int seed = 0)
+        {
+            //int digit = 0;
+            
+            //foreach (var xyCoordinates in new Coordinates().YieldCoordinates(size))
+            //{
+            //    map.Set(xyCoordinates, ++digit);
+            //}
+
+            //emptyCell = new Coordinates(size);
+
+            //if (seed > 0)
+            //{
+            //    Shuffle();//seed);
+            //}
+
+            if (firstGame)
+            { 
+                Shuffle();
+                firstGame = false;
+            }
+
+            //Moves = 0;
+        }
+
+        public void Shuffle() //int seed)
         {
             int digit = 0;
-            
+
             foreach (var xyCoordinates in new Coordinates().YieldCoordinates(size))
             {
                 map.Set(xyCoordinates, ++digit);
@@ -27,22 +53,18 @@ namespace FifteenLibrary
 
             emptyCell = new Coordinates(size);
 
-            if (seed > 0)
-            {
-                Shuffle(seed);
-            }
+            //-------------------------------
 
-            Moves = 0;
-        }
+            Random rand = new Random();//seed);
 
-        public void Shuffle(int seed)
-        {
-            Random rand = new Random(seed);
-
-            for (int i = 0; i < seed; i++)
+            for (int i = 0; i < rand.Next(); i++)
             {
                 CLickAt(rand.Next(size), rand.Next(size));
             }
+
+            //--------------------------------
+
+            Moves = 0;
         }
 
         public int CLickAt(int x, int y)

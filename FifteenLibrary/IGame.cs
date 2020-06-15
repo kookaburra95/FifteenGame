@@ -4,9 +4,9 @@
     {
         public int Moves { get; set; }
 
-        public void Start(int seed = 0);
+        public void Start();//int seed = 0);
 
-        public void Shuffle(int seed); 
+        public void Shuffle();//int seed); 
 
         public int CLickAt(int x, int y);
 

@@ -26,7 +26,7 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonShuffle" Grid.ColumnSpan="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" Background="#BFFADADD" Padding="0,5,0,0" Foreground="#FFCF2361" FontSize="48" IsTabStop="False">
+        <Button x:Name="buttonShuffle" Grid.ColumnSpan="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" Background="#BFFADADD" Padding="0,5,0,0" Foreground="#FFCF2361" FontSize="48" IsTabStop="False" Click="buttonShuffle_Click">
             <Button.FocusVisualStyle>
                 <Style/>
             </Button.FocusVisualStyle> Shuffle
