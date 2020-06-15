@@ -68,6 +68,7 @@ namespace Fifteen
             }
 
             buttonStart.IsEnabled = false;
+            EnabledGameButtons(true);
         }
 
         private void HideButtons()
@@ -108,13 +109,37 @@ namespace Fifteen
             }
             
             button.IsEnabled = digit > 0;
-        }
+        }   
 
         private void buttonShuffle_Click(object sender, RoutedEventArgs e)
         {
             game.Shuffle();
             ShowButtons();
             buttonStart.IsEnabled = true;
+            EnabledGameButtons(false);
+        }
+
+        private void EnabledGameButtons(bool flag) //true - enabled, false - disabled
+        {
+            var buttons = new List<Button>()
+            {
+                b00, b01, b02, b03,
+                b10, b11, b12, b13,
+                b20, b21, b22, b23,
+                b30, b31, b32, b33
+            };
+
+            foreach (var button in buttons) 
+            {
+                if (flag)
+                {
+                    button.IsEnabled = true;
+                }
+                else
+                {
+                    button.IsEnabled = false;
+                }
+            }
         }
     }
 }
