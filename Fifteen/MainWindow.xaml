@@ -1,11 +1,11 @@
-﻿<Window x:Name="fmFifteen" x:Class="Fifteen.MainWindow"
+﻿<Window x:Name="Fifteen" x:Class="Fifteen.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fifteen"
         mc:Ignorable="d"
-        Title="" Height="690" Width="450" FontSize="72" FontFamily="Bahnschrift Light" Background="White" Icon="/icon.ico" WindowStartupLocation="CenterScreen" Cursor="Hand" MinHeight="690" MinWidth="450">
+        Title="" Height="690" Width="450" FontSize="72" FontFamily="Bahnschrift Light" Background="White" Icon="/icon.ico" WindowStartupLocation="CenterScreen" Cursor="Hand" MinHeight="690" MinWidth="450" Deactivated="Fifteen_Deactivated">
     <Window.Resources>
         <Color x:Key="FirstRowGradient">#FF5E48BF</Color>
     </Window.Resources>
@@ -36,13 +36,18 @@
                 <Style/>
             </Button.FocusVisualStyle> Records
         </Button>
-        <Button x:Name="buttonStart" Grid.ColumnSpan="4" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,0,0,0" Foreground="#FF229C2D" FontSize="48" IsTabStop="False" Click="buttonStart_Click">
+        <Button x:Name="buttonStart" Grid.ColumnSpan="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,0,0,0" Foreground="#FF229C2D" FontSize="48" IsTabStop="False" Click="buttonStart_Click">
             <Button.Background>
                 <SolidColorBrush Color="#BFB2CFBD"/>
             </Button.Background>
             <Button.FocusVisualStyle>
                 <Style/>
             </Button.FocusVisualStyle> Start
+        </Button>
+        <Button x:Name="buttonPause" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,0,0,0" Foreground="#FF8D8B75" FontSize="48" IsTabStop="False" Background="#BFFBEC5D" Content="Pause" Click="buttonPause_Click">
+            <Button.FocusVisualStyle>
+                <Style/>
+            </Button.FocusVisualStyle>
         </Button>
         <Button x:Name="b00" Grid.Column="0" Grid.Row="2" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
             <Button.FocusVisualStyle>
@@ -175,7 +180,7 @@
                 </LinearGradientBrush>
             </Button.Foreground>
         </Button>
-        <Label x:Name="labelTime" Content="00:00:00" Grid.ColumnSpan="4" Grid.Row="1" Margin="1" HorizontalAlignment="Center" Padding="0,7,0,0" FontSize="42"></Label>
-        <Label x:Name="labelMoves" Content="0" Grid.ColumnSpan="4" Grid.Row="6" Margin="1" HorizontalAlignment="Center" Padding="0,7,0,0" FontSize="42"></Label>
+        <Label x:Name="labelTime" Content="00:00" Grid.ColumnSpan="4" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0,7,0,0" FontSize="42"></Label>
+        <Label x:Name="labelMoves" Content="0" Grid.ColumnSpan="4" Grid.Row="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0,7,0,0" FontSize="42"></Label>
     </Grid>
 </Window>

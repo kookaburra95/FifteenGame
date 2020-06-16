@@ -26,6 +26,9 @@ namespace Fifteen
         private const int size = 4;
         private Game game;
         private bool firstGame = true;
+        private bool pauseFlag = true;
+        private bool firstClick = true;
+        private bool gameStart = false;
 
         DispatcherTimer timer = new DispatcherTimer();
         Stopwatch stopwatch = new Stopwatch();
@@ -39,6 +42,7 @@ namespace Fifteen
             
             buttonShuffle.IsEnabled = false;
             buttonRecords.IsEnabled = false;
+            buttonPause.IsEnabled = false;
 
             timer.Tick += new EventHandler(timer_Tick);
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
@@ -49,7 +53,7 @@ namespace Fifteen
             if (stopwatch.IsRunning)
             {
                 TimeSpan timeSpan = stopwatch.Elapsed;
-                currentTime = $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
+                currentTime = $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
                 labelTime.Content = currentTime;
             }
         }
@@ -69,17 +73,41 @@ namespace Fifteen
             game.CLickAt(x, y);
             ShowButtons();
 
+            if (firstClick)
+            {
+                stopwatch.Start();
+                timer.Start();
+
+                firstClick = false;
+            }
+
             if (game.IsSolved())
             {
                 if (stopwatch.IsRunning)
                 {
                     stopwatch.Stop();
+                    firstClick = true;
                 }
 
-                //TODO в Records
+                gameStart = false;
 
                 labelMoves.Content = $"You win, {game.Moves} moves!";
                 buttonStart.IsEnabled = false;
+                EnabledGameButtons(false);
+
+                buttonPause.IsEnabled = false;
+
+
+                NameWindow nw = new NameWindow();
+
+                if (nw.ShowDialog() == true)
+                {
+                    Records records = new Records(nw.UserName, game.Moves, currentTime, (stopwatch.Elapsed).TotalMilliseconds);
+
+                    //Test
+                    MessageBox.Show(
+                        $"{records.Name}\n{records.Moves}\n{records.Time}\n\n\n{records.TimeTotalMilliseconds}");
+                }
             }
         }
 
@@ -95,9 +123,12 @@ namespace Fifteen
 
             buttonStart.IsEnabled = false;
             EnabledGameButtons(true);
+            buttonPause.IsEnabled = true;
 
-            stopwatch.Start();
-            timer.Start();
+            gameStart = true;
+
+            //stopwatch.Start();
+            //timer.Start();
         }
 
         private void HideButtons()
@@ -146,9 +177,13 @@ namespace Fifteen
             ShowButtons();
             buttonStart.IsEnabled = true;
             EnabledGameButtons(false);
+            buttonPause.IsEnabled = false;
 
             stopwatch.Reset();
-            labelTime.Content = "00:00:00";
+            labelTime.Content = "00:00";
+
+            firstClick = true;
+            gameStart = false;
         }
 
         private void EnabledGameButtons(bool flag) //true - enabled, false - disabled
@@ -171,6 +206,79 @@ namespace Fifteen
                 {
                     button.IsEnabled = false;
                 }
+            }
+        }
+
+        private void VisibleGameButtons(bool flag) //true - enabled, false - disabled
+        {
+            var buttons = new List<Button>()
+            {
+                b00, b01, b02, b03,
+                b10, b11, b12, b13,
+                b20, b21, b22, b23,
+                b30, b31, b32, b33
+            };
+
+            foreach (var button in buttons)
+            {
+                if (flag)
+                {
+                    ShowButtons();
+                }
+                else
+                {
+                    for (int x = 0; x < size; x++)
+                    {
+                        for (int y = 0; y < size; y++)
+                        {
+                            button.Content = "";
+                        }
+                    }
+                }
+            }   
+        }
+
+        private void buttonPause_Click(object sender, RoutedEventArgs e)
+        {
+            if (pauseFlag)
+            {
+                Pause();
+            }
+            else
+            {
+                Continue();
+            }
+        }
+
+        private void Pause()
+        {
+            buttonPause.Content = "Continue";
+            pauseFlag = false;
+            buttonShuffle.IsEnabled = false;
+
+            stopwatch.Stop();
+
+            EnabledGameButtons(false);
+            VisibleGameButtons(false);
+        }
+
+        private void Continue()
+        {
+            buttonPause.Content = "Pause";
+            pauseFlag = true;
+            buttonShuffle.IsEnabled = true;
+
+            stopwatch.Start();
+
+            EnabledGameButtons(true);
+            VisibleGameButtons(true);
+        }
+
+        private void Fifteen_Deactivated(object sender, EventArgs e)
+        {
+            if (gameStart)
+            {
+                Pause();
             }
         }
     }
