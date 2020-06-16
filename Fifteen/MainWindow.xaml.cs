@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using FifteenLibrary;
 
 namespace Fifteen
@@ -25,6 +27,10 @@ namespace Fifteen
         private Game game;
         private bool firstGame = true;
 
+        DispatcherTimer timer = new DispatcherTimer();
+        Stopwatch stopwatch = new Stopwatch();
+        private string currentTime = String.Empty;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +39,19 @@ namespace Fifteen
             
             buttonShuffle.IsEnabled = false;
             buttonRecords.IsEnabled = false;
+
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (stopwatch.IsRunning)
+            {
+                TimeSpan timeSpan = stopwatch.Elapsed;
+                currentTime = $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}:{timeSpan.Milliseconds / 10:00}";
+                labelTime.Content = currentTime;
+            }
         }
 
         private void b_Click(object sender, RoutedEventArgs e)
@@ -52,6 +71,13 @@ namespace Fifteen
 
             if (game.IsSolved())
             {
+                if (stopwatch.IsRunning)
+                {
+                    stopwatch.Stop();
+                }
+
+                //TODO в Records
+
                 labelMoves.Content = $"You win, {game.Moves} moves!";
                 buttonStart.IsEnabled = false;
             }
@@ -69,6 +95,9 @@ namespace Fifteen
 
             buttonStart.IsEnabled = false;
             EnabledGameButtons(true);
+
+            stopwatch.Start();
+            timer.Start();
         }
 
         private void HideButtons()
@@ -117,6 +146,9 @@ namespace Fifteen
             ShowButtons();
             buttonStart.IsEnabled = true;
             EnabledGameButtons(false);
+
+            stopwatch.Reset();
+            labelTime.Content = "00:00:00";
         }
 
         private void EnabledGameButtons(bool flag) //true - enabled, false - disabled

@@ -175,7 +175,7 @@
                 </LinearGradientBrush>
             </Button.Foreground>
         </Button>
-        <Label Content="00:00:00" Grid.ColumnSpan="4" Grid.Row="1" Margin="1" HorizontalAlignment="Center" Padding="0,7,0,0" FontSize="42"></Label>
+        <Label x:Name="labelTime" Content="00:00:00" Grid.ColumnSpan="4" Grid.Row="1" Margin="1" HorizontalAlignment="Center" Padding="0,7,0,0" FontSize="42"></Label>
         <Label x:Name="labelMoves" Content="0" Grid.ColumnSpan="4" Grid.Row="6" Margin="1" HorizontalAlignment="Center" Padding="0,7,0,0" FontSize="42"></Label>
     </Grid>
 </Window>
