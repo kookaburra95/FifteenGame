@@ -133,8 +133,11 @@ namespace Fifteen
                         Close();
                     }
 
-                    WindowRecords records = new WindowRecords();
-                    records.Show();
+                    if (!IsWindowOpen<WindowRecords>())
+                    {
+                        WindowRecords records = new WindowRecords();
+                        records.Show();
+                    }
                 }
             }   
         }
@@ -312,17 +315,27 @@ namespace Fifteen
 
         private void buttonRecords_Click(object sender, RoutedEventArgs e)
         {
-            var fileExist = File.Exists(PATH);
+            if (!IsWindowOpen<WindowRecords>())
+            {
+                var fileExist = File.Exists(PATH);
 
-            if (fileExist)
-            {
-                WindowRecords records = new WindowRecords();
-                records.Show();
+                if (fileExist)
+                {
+                    WindowRecords records = new WindowRecords();
+                    records.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Records does not exist!\nPlay first game!");
+                }
             }
-            else
-            {
-                MessageBox.Show("Records does not exist!\nPlay first game!");
-            }
+        }
+
+        public static bool IsWindowOpen<T>(string name = "") where T : Window
+        {
+            return string.IsNullOrEmpty(name)
+                ? Application.Current.Windows.OfType<T>().Any()
+                : Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
         }
     }
 }
