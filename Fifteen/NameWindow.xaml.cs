@@ -26,7 +26,7 @@ namespace Fifteen
 
         private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
-            if (UserName != String.Empty)
+            if (!String.IsNullOrWhiteSpace(UserName))
             {
                 this.DialogResult = true;
             }

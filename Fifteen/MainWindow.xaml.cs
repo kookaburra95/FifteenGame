@@ -121,7 +121,7 @@ namespace Fifteen
                         Close();
                     }
 
-                    record.Add(new Records(nw.UserName, game.Moves, currentTime, (stopwatch.Elapsed).TotalMilliseconds));
+                    record.Add(new Records((nw.UserName).TrimStart(), game.Moves, currentTime, (stopwatch.Elapsed).TotalMilliseconds));
 
                     try
                     {

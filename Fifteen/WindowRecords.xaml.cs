@@ -45,7 +45,9 @@ namespace Fifteen
 
             if (recordsList != null)
             {
-                dgRecords.ItemsSource = from record in recordsList orderby record.Moves select record;
+                dgRecords.ItemsSource = from record in recordsList 
+                    orderby record.Moves, record.TimeTotalMilliseconds, record.Name  
+                    select record;
             }
         }
 

@@ -23,7 +23,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="tbName" Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="1" Text="Random Test Text" FontFamily="Bahnschrift"
+        <TextBox x:Name="tbName" Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="1" Text="" FontFamily="Bahnschrift"
                  FontSize="24" Padding="2" TextAlignment="Center" BorderBrush="#FF0078D7" BorderThickness="2"/>
         <Button x:Name="buttonOK" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="5" Content="OK" Click="buttonOK_Click" 
                 Foreground="#FF229C2D" FontFamily="Bahnschrift" Padding="3" FontSize="24">
