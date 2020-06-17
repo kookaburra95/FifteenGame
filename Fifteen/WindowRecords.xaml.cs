@@ -55,5 +55,10 @@ namespace Fifteen
         {
             e.Row.Tag = e.Row.GetIndex() + 1;
         }
+
+        private void WindowsRecords_Deactivated(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
