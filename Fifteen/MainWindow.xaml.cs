@@ -312,8 +312,17 @@ namespace Fifteen
 
         private void buttonRecords_Click(object sender, RoutedEventArgs e)
         {
-            WindowRecords records = new WindowRecords();
-            records.Show();
+            var fileExist = File.Exists(PATH);
+
+            if (fileExist)
+            {
+                WindowRecords records = new WindowRecords();
+                records.Show();
+            }
+            else
+            {
+                MessageBox.Show("Records does not exist!\nPlay first game!");
+            }
         }
     }
 }
