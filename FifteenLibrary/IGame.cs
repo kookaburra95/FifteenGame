@@ -4,9 +4,9 @@
     {
         public int Moves { get; set; }
 
-        public void Start();//int seed = 0);
+        public void Start();
 
-        public void Shuffle();//int seed); 
+        public void Shuffle();
 
         public int CLickAt(int x, int y);
 
@@ -15,9 +15,5 @@
         public int GetDigitAt(int x, int y);
 
         public bool IsSolved();
-
-        //TODO Добавить таймер
-
-
     }
 }

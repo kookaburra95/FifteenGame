@@ -1,69 +1,48 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace FifteenLibrary
 {
     public class Game: IGame
     {
-        private Map map;
-        private Coordinates emptyCell;
-        private bool firstGame = true;
+        private Map _map;
+        private Coordinates _emptyCell;
+        private bool _firstGame = true;
 
-        private int size;
+        private readonly int _size;
         public int Moves { get; set; }
 
         public Game(int size)
         {
-            this.size = size;
-            map = new Map(size);
+            this._size = size;
+            _map = new Map(size);
         }
 
-        public void Start()//int seed = 0)
+        public void Start()
         {
-            //int digit = 0;
-            
-            //foreach (var xyCoordinates in new Coordinates().YieldCoordinates(size))
-            //{
-            //    map.Set(xyCoordinates, ++digit);
-            //}
-
-            //emptyCell = new Coordinates(size);
-
-            //if (seed > 0)
-            //{
-            //    Shuffle();//seed);
-            //}
-
-            if (firstGame)
+            if (_firstGame)
             { 
                 Shuffle();
-                firstGame = false;
+                _firstGame = false;
             }
-
-            //Moves = 0;
         }
 
-        public void Shuffle() //int seed)
+        public void Shuffle()
         {
             int digit = 0;
 
-            foreach (var xyCoordinates in new Coordinates().YieldCoordinates(size))
+            foreach (var xyCoordinates in new Coordinates().YieldCoordinates(_size))
             {
-                map.Set(xyCoordinates, ++digit);
+                _map.Set(xyCoordinates, ++digit);
             }
 
-            emptyCell = new Coordinates(size);
+            _emptyCell = new Coordinates(_size);
 
-            //-------------------------------
-
-            Random rand = new Random();//seed);
+            Random rand = new Random();
 
             for (int i = 0; i < rand.Next(); i++)
             {
-                CLickAt(rand.Next(size), rand.Next(size));
+                CLickAt(rand.Next(_size), rand.Next(_size));
             }
-
-            //--------------------------------
 
             Moves = 0;
         }
@@ -75,26 +54,26 @@ namespace FifteenLibrary
 
         private int CLickAt(Coordinates xyCoordinates)
         {
-            if (emptyCell.Equals(xyCoordinates))
+            if (_emptyCell.Equals(xyCoordinates))
             {
                 return 0;
             }
 
-            if (xyCoordinates.x != emptyCell.x && xyCoordinates.y != emptyCell.y)
+            if (xyCoordinates.X != _emptyCell.X && xyCoordinates.Y != _emptyCell.Y)
             {
                 return 0;
             }
 
-            int steps = Math.Abs(xyCoordinates.x - emptyCell.x) + Math.Abs(xyCoordinates.y - emptyCell.y);
+            int steps = Math.Abs(xyCoordinates.X - _emptyCell.X) + Math.Abs(xyCoordinates.Y - _emptyCell.Y);
 
-            while (xyCoordinates.x != emptyCell.x)
+            while (xyCoordinates.X != _emptyCell.X)
             {
-                Shift(Math.Sign(xyCoordinates.x - emptyCell.x), 0);
+                Shift(Math.Sign(xyCoordinates.X - _emptyCell.X), 0);
             }
 
-            while (xyCoordinates.y != emptyCell.y)
+            while (xyCoordinates.Y != _emptyCell.Y)
             {
-                Shift(0, Math.Sign(xyCoordinates.y - emptyCell.y));
+                Shift(0, Math.Sign(xyCoordinates.Y - _emptyCell.Y));
             }
 
             Moves += steps;
@@ -104,11 +83,11 @@ namespace FifteenLibrary
 
         public void Shift(int sx, int sy)
         {
-            Coordinates next = emptyCell.Add(sx, sy);
+            Coordinates next = _emptyCell.Add(sx, sy);
 
-            map.Copy(next, emptyCell);
+            _map.Copy(next, _emptyCell);
 
-            emptyCell = next;
+            _emptyCell = next;
         }
 
         public int GetDigitAt(int x, int y)
@@ -118,17 +97,17 @@ namespace FifteenLibrary
             
         private int GetDigitAt(Coordinates xyCoordinates)
         {
-            if (emptyCell.Equals(xyCoordinates))
+            if (_emptyCell.Equals(xyCoordinates))
             {
                 return 0;
             }
             
-            return map.Get(xyCoordinates);
+            return _map.Get(xyCoordinates);
         }
 
         public bool IsSolved()
         {
-            if (!emptyCell.Equals(new Coordinates(size)))
+            if (!_emptyCell.Equals(new Coordinates(_size)))
             {
                 return false;
             }
@@ -136,11 +115,11 @@ namespace FifteenLibrary
 
             int digit = 0;
 
-            foreach (Coordinates xyCoordinates in new Coordinates().YieldCoordinates(size))
+            foreach (Coordinates xyCoordinates in new Coordinates().YieldCoordinates(_size))
             {
-                if (map.Get(xyCoordinates) != ++digit)
+                if (_map.Get(xyCoordinates) != ++digit)
                 {
-                    return emptyCell.Equals(xyCoordinates);
+                    return _emptyCell.Equals(xyCoordinates);
                 }
             }
 

@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO;
-using System.Text;
 using Newtonsoft.Json;
 
 namespace Fifteen.Services
 {
     class FIleIOService
     {
-        private readonly string PATH;
+        private readonly string _path;
 
         public FIleIOService(string path)
         {
-            PATH = path;
+            _path = path;
         }
         
         public BindingList<Records> LoadData()
         {
-            var fileExist = File.Exists(PATH);
+            var fileExist = File.Exists(_path);
 
             if (!fileExist)
             {
-                File.CreateText(PATH).Dispose();
+                File.CreateText(_path).Dispose();
                 return new BindingList<Records>();
             }
 
-            using (var reader = File.OpenText(PATH))
+            using (var reader = File.OpenText(_path))
             {
                 var fileText = reader.ReadToEnd();
                 return JsonConvert.DeserializeObject<BindingList<Records>>(fileText);
@@ -35,7 +32,7 @@ namespace Fifteen.Services
 
         public void SaveData(BindingList<Records> recordsList)
         {
-            using (StreamWriter writer = File.CreateText(PATH))
+            using (StreamWriter writer = File.CreateText(_path))
             {
                 string output = JsonConvert.SerializeObject(recordsList);
                 writer.Write(output);

@@ -4,29 +4,29 @@ namespace FifteenLibrary
 {
     struct Coordinates
     {
-        public int x; 
-        public int y;
+        public int X; 
+        public int Y;
 
         public Coordinates(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
-
+            
         public Coordinates(int size)
         {
-            x = size - 1;
-            y = size - 1;
+            X = size - 1;
+            Y = size - 1;
         }
 
         public bool OnBoard(int size)
         {
-            if (x < 0 || x > size - 1)
+            if (X < 0 || X > size - 1)
             {
                 return false;
             }
 
-            if (y < 0 || y > size - 1)
+            if (Y < 0 || Y > size - 1)
             {
                 return false;
             }
@@ -36,9 +36,9 @@ namespace FifteenLibrary
 
         public IEnumerable<Coordinates> YieldCoordinates(int size)
         {
-            for (y = 0; y < size; y++)
+            for (Y = 0; Y < size; Y++)
             {
-                for (x = 0; x < size; x++)
+                for (X = 0; X < size; X++)
                 {
                     yield return this;
                 }
@@ -47,7 +47,7 @@ namespace FifteenLibrary
 
         public Coordinates Add(int sx, int sy)
         {
-            return new Coordinates(x + sx, y + sy);
+            return new Coordinates(X + sx, Y + sy);
         }
     }
 }

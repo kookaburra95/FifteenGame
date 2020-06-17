@@ -1,41 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Fifteen.Services;
 
 namespace Fifteen
 {
-    /// <summary>
-    /// Interaction logic for WindowRecords.xaml
-    /// </summary>
     public partial class WindowRecords : Window
     {
-        private readonly string PATH = $"{Environment.CurrentDirectory}\\recordsList.json";
-        private BindingList<Records> recordsList;
-        private FIleIOService fileIOService;
+        private readonly string _path = $"{Environment.CurrentDirectory}\\recordsList.json";
+        private BindingList<Records> _recordsList;
+        private FIleIOService _fileIoService;
         
         public WindowRecords()
         {
             InitializeComponent();
-        }
-
+        }   
+            
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            fileIOService = new FIleIOService(PATH);
+            _fileIoService = new FIleIOService(_path);
 
             try
             {
-                recordsList = fileIOService.LoadData();
+                _recordsList = _fileIoService.LoadData();
             }
             catch (Exception exception)
             {
@@ -43,9 +32,9 @@ namespace Fifteen
                 Close();
             }
 
-            if (recordsList != null)
+            if (_recordsList != null)
             {
-                dgRecords.ItemsSource = from record in recordsList 
+                dgRecords.ItemsSource = from record in _recordsList 
                     orderby record.Moves, record.TimeTotalMilliseconds, record.Name  
                     select record;
             }

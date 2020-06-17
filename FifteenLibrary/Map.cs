@@ -2,28 +2,28 @@
 {
     struct Map
     {
-        private int size;
-        private int[,] map;
+        private readonly int _size;
+        private readonly int[,] _map;
 
         public Map(int size)
         {
-            this.size = size;
-            map = new int[size,size];
+            this._size = size;
+            _map = new int[size,size];
         }
 
         public void Set(Coordinates xyCoordinates, int value)
         {
-            if (xyCoordinates.OnBoard(size))
+            if (xyCoordinates.OnBoard(_size))
             {
-                map[xyCoordinates.x, xyCoordinates.y] = value;
+                _map[xyCoordinates.X, xyCoordinates.Y] = value;
             }
         }
 
         public int Get(Coordinates xyCoordinates)
         {
-            if (xyCoordinates.OnBoard(size))
+            if (xyCoordinates.OnBoard(_size))
             {
-                return map[xyCoordinates.x, xyCoordinates.y];
+                return _map[xyCoordinates.X, xyCoordinates.Y];
             }
 
             return 0;
