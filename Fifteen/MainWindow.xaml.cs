@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Fifteen.Services;
 using FifteenLibrary;
 
 namespace Fifteen
@@ -34,6 +37,10 @@ namespace Fifteen
         Stopwatch stopwatch = new Stopwatch();
         private string currentTime = String.Empty;
 
+        private readonly string PATH = $"{Environment.CurrentDirectory}\\recordsList.json";
+        private BindingList<Records> record = new BindingList<Records>();
+        private FIleIOService fileIOService;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -41,7 +48,7 @@ namespace Fifteen
             HideButtons();
             
             buttonShuffle.IsEnabled = false;
-            buttonRecords.IsEnabled = false;
+            //buttonRecords.IsEnabled = false;
             buttonPause.IsEnabled = false;
 
             timer.Tick += new EventHandler(timer_Tick);
@@ -102,13 +109,34 @@ namespace Fifteen
 
                 if (nw.ShowDialog() == true)
                 {
-                    Records records = new Records(nw.UserName, game.Moves, currentTime, (stopwatch.Elapsed).TotalMilliseconds);
+                    fileIOService = new FIleIOService(PATH);
 
-                    //Test
-                    MessageBox.Show(
-                        $"{records.Name}\n{records.Moves}\n{records.Time}\n\n\n{records.TimeTotalMilliseconds}");
+                    try
+                    {
+                        record = fileIOService.LoadData();
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message);
+                        Close();
+                    }
+
+                    record.Add(new Records(nw.UserName, game.Moves, currentTime, (stopwatch.Elapsed).TotalMilliseconds));
+
+                    try
+                    {
+                        fileIOService.SaveData(record);
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show(exception.Message);
+                        Close();
+                    }
+
+                    WindowRecords records = new WindowRecords();
+                    records.Show();
                 }
-            }
+            }   
         }
 
         private void buttonStart_Click(object sender, RoutedEventArgs e)
@@ -280,6 +308,12 @@ namespace Fifteen
             {
                 Pause();
             }
+        }
+
+        private void buttonRecords_Click(object sender, RoutedEventArgs e)
+        {
+            WindowRecords records = new WindowRecords();
+            records.Show();
         }
     }
 }

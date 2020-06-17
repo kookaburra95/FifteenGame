@@ -1,0 +1,23 @@
+﻿<Window x:Class="Fifteen.WindowRecords"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fifteen"
+        mc:Ignorable="d"
+        Title="WindowRecords" Height="690" Width="450" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid>
+        <DataGrid x:Name="dgRecords" FontFamily="Bahnschrift" FontSize="16" AutoGenerateColumns="False" LoadingRow="dgRecords_LoadingRow">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header="Name" Width="*" IsReadOnly="True" Binding="{Binding Path= Name}"/>
+                <DataGridTextColumn Header="Moves" Width="100" IsReadOnly="True" Binding="{Binding Path= Moves}"/>
+                <DataGridTextColumn Header="Time" Width="150" IsReadOnly="True" Binding="{Binding Path= Time}"/>
+            </DataGrid.Columns>
+            <DataGrid.RowHeaderTemplate>
+                <DataTemplate>
+                    <Label FontSize="16" FontFamily="Bahnschrift" Content="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}, Path=Tag}"/>
+                </DataTemplate>
+            </DataGrid.RowHeaderTemplate>
+        </DataGrid> 
+    </Grid>
+</Window>
