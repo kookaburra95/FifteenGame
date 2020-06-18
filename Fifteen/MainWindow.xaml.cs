@@ -82,6 +82,8 @@ namespace Fifteen
                 _timer.Start();
 
                 _firstClick = false;
+
+                buttonPause.IsEnabled = true;
             }
 
             if (_game.IsSolved())
@@ -168,6 +170,8 @@ namespace Fifteen
 
             buttonStart.Visibility = Visibility.Hidden;
             buttonRecords.Visibility = Visibility.Hidden;
+
+            buttonPause.IsEnabled = false;
 
             Grid.SetColumnSpan(buttonShuffle, 4);
             Grid.SetColumnSpan(buttonPause, 4);
@@ -400,17 +404,20 @@ namespace Fifteen
         {
             if (_gameStart)
             {
-                Pause();
+                if (!_firstClick)
+                {
+                    Pause();
 
-                //UI
-                buttonShuffle.Visibility = Visibility.Hidden;
-                buttonRecords.Visibility = Visibility.Visible;
+                    //UI
+                    buttonShuffle.Visibility = Visibility.Hidden;
+                    buttonRecords.Visibility = Visibility.Visible;
 
-                buttonPause.Background = new SolidColorBrush(Color.FromRgb(168, 212, 185));
-                buttonPause.Foreground = new SolidColorBrush(Color.FromRgb(34, 156, 45));
+                    buttonPause.Background = new SolidColorBrush(Color.FromRgb(168, 212, 185));
+                    buttonPause.Foreground = new SolidColorBrush(Color.FromRgb(34, 156, 45));
 
-                Grid.SetColumnSpan(buttonRecords, 4);
-                Grid.SetColumn(buttonRecords, 0);
+                    Grid.SetColumnSpan(buttonRecords, 4);
+                    Grid.SetColumn(buttonRecords, 0);
+                }
             }
         }
 
