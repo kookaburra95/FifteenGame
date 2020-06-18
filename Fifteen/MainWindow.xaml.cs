@@ -74,6 +74,7 @@ namespace Fifteen
 
             _game.CLickAt(x, y);
             ShowButtons();
+            ColoredGameButtons();
 
             if (_firstClick)
             {
@@ -150,6 +151,7 @@ namespace Fifteen
             {
                 _game.Start();
                 ShowButtons();
+                ColoredGameButtons();
                 buttonShuffle.IsEnabled = true;
                 _firstGame = false;
             }
@@ -216,6 +218,7 @@ namespace Fifteen
         {
             _game.Shuffle();
             ShowButtons();
+            ColoredGameButtons();
             buttonStart.IsEnabled = true;
             EnabledGameButtons(false);
             buttonPause.IsEnabled = false;
@@ -287,6 +290,57 @@ namespace Fifteen
                     }
                 }
             }   
+        }
+
+        private void ColoredGameButtons()
+        {
+            var buttons = new List<Button>()
+            {
+                b00, b01, b02, b03,
+                b10, b11, b12, b13,
+                b20, b21, b22, b23,
+                b30, b31, b32, b33
+            };
+
+            LinearGradientBrush firstColor = new LinearGradientBrush(
+
+                Color.FromRgb(184,42,207),
+                Color.FromRgb(94,72,191),
+                new Point(0.5,0),
+                new Point(0.5,1));
+
+            LinearGradientBrush secondColor = new LinearGradientBrush(
+
+                Color.FromRgb(14, 62, 131),
+                Color.FromRgb(89, 207, 105),
+                new Point(0.5, 0),
+                new Point(0.5, 1));
+
+            LinearGradientBrush thirdColor = new LinearGradientBrush(
+
+                Color.FromRgb(201, 100, 137),
+                Color.FromRgb(247, 224, 80),
+                new Point(0.5, 0),
+                new Point(0.5, 1));
+
+            LinearGradientBrush fourthColor = new LinearGradientBrush(
+
+                Color.FromRgb(83, 155, 195),
+                Color.FromRgb(218, 153, 153),
+                new Point(0.5, 0),
+                new Point(0.5, 1));
+
+
+            foreach (var button in buttons)
+            {
+                switch (button.Content)
+                {
+                    case "1": case "2": case "3": case "4": button.Foreground = firstColor; break;
+                    case "5": case "6": case "7": case "8": button.Foreground = secondColor; break;
+                    case "9": case "10": case "11": case "12": button.Foreground = thirdColor; break;
+                    case "13": case "14": case "15": case "": button.Foreground = fourthColor; break;
+                }
+            }
         }
 
         private void buttonPause_Click(object sender, RoutedEventArgs e)
