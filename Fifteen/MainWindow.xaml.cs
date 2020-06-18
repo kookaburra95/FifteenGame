@@ -320,7 +320,7 @@ namespace Fifteen
 
         private void Pause()
         {
-            buttonPause.Content = "Continue";
+            buttonPause.Content = "▶ Continue";
             _pauseFlag = false;
             buttonShuffle.IsEnabled = false;
 
@@ -332,7 +332,7 @@ namespace Fifteen
 
         private void Continue()
         {
-            buttonPause.Content = "Pause";
+            buttonPause.Content = "𝅛𝅛 Pause";
             _pauseFlag = true;
             buttonShuffle.IsEnabled = true;
 

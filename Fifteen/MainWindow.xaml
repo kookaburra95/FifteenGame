@@ -26,25 +26,22 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonShuffle" Grid.ColumnSpan="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" Background="#BFFADADD" Padding="0,5,0,0" Foreground="#FFCF2361" FontSize="48" IsTabStop="False" Click="buttonShuffle_Click">
+        <Button x:Name="buttonShuffle" Grid.ColumnSpan="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" Background="#BFFADADD" Padding="0,7,0,0" Foreground="#FFCF2361" FontSize="40" IsTabStop="False" Click="buttonShuffle_Click" Content="⬆⬇Shuffle">
             <Button.FocusVisualStyle>
                 <Style/>
-            </Button.FocusVisualStyle> Shuffle
+            </Button.FocusVisualStyle>
         </Button>
-        <Button x:Name="buttonRecords" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" Background="#BF8DBDD8" Padding="0,5,0,0" Foreground="#FF215370" FontSize="48" IsTabStop="False" Click="buttonRecords_Click">
+        <Button x:Name="buttonRecords" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" Background="#BF8DBDD8" Padding="0,7,0,0" Foreground="#FF215370" FontSize="40" IsTabStop="False" Click="buttonRecords_Click" Content="♕Records">
             <Button.FocusVisualStyle>
                 <Style/>
-            </Button.FocusVisualStyle> Records
+            </Button.FocusVisualStyle>
         </Button>
-        <Button x:Name="buttonStart" Grid.ColumnSpan="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,0,0,0" Foreground="#FF229C2D" FontSize="48" IsTabStop="False" Click="buttonStart_Click">
-            <Button.Background>
-                <SolidColorBrush Color="#BF8BC5A1"/>
-            </Button.Background>
+        <Button x:Name="buttonStart" Grid.ColumnSpan="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,5,0,0" Foreground="#FF229C2D" FontSize="40" IsTabStop="False" Click="buttonStart_Click" Background="#BF8BC5A1" Content="▶ Start">
             <Button.FocusVisualStyle>
                 <Style/>
-            </Button.FocusVisualStyle> Start
+            </Button.FocusVisualStyle>
         </Button>
-        <Button x:Name="buttonPause" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,0,0,0" Foreground="#FF8D8B75" FontSize="48" IsTabStop="False" Background="#BFFBEC5D" Content="Pause" Click="buttonPause_Click">
+        <Button x:Name="buttonPause" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,5,0,0" Foreground="#FF8D8B75" FontSize="40" IsTabStop="False" Background="#BFFBEC5D" Content="𝅛𝅛 Pause" Click="buttonPause_Click">
             <Button.FocusVisualStyle>
                 <Style/>
             </Button.FocusVisualStyle>
