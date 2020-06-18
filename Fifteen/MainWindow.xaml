@@ -38,7 +38,7 @@
         </Button>
         <Button x:Name="buttonStart" Grid.ColumnSpan="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,0,0,0" Foreground="#FF229C2D" FontSize="48" IsTabStop="False" Click="buttonStart_Click">
             <Button.Background>
-                <SolidColorBrush Color="#BFB2CFBD"/>
+                <SolidColorBrush Color="#BF8BC5A1"/>
             </Button.Background>
             <Button.FocusVisualStyle>
                 <Style/>

@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 using Fifteen.Services;
 using FifteenLibrary;
@@ -40,6 +41,13 @@ namespace Fifteen
 
             _timer.Tick += timer_Tick;
             _timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
+
+            //UI
+            buttonPause.Visibility = Visibility.Hidden;
+            buttonShuffle.Visibility = Visibility.Hidden;
+            Grid.SetColumnSpan(buttonStart, 4);
+            Grid.SetColumnSpan(buttonRecords, 4);
+            Grid.SetColumn(buttonRecords,0);
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -125,6 +133,13 @@ namespace Fifteen
                         WindowRecords records = new WindowRecords();
                         records.Show();
                     }
+
+                    //UI
+                    buttonRecords.Visibility = Visibility.Visible;
+                    Grid.SetColumnSpan(buttonRecords, 2);
+                    Grid.SetColumn(buttonRecords, 2);
+
+                    Grid.SetColumnSpan(buttonShuffle, 2);
                 }
             }   
         }
@@ -144,6 +159,17 @@ namespace Fifteen
             buttonPause.IsEnabled = true;
 
             _gameStart = true;
+
+            //UI
+            buttonPause.Visibility = Visibility.Visible;
+            buttonShuffle.Visibility = Visibility.Visible;
+
+            buttonStart.Visibility = Visibility.Hidden;
+            buttonRecords.Visibility = Visibility.Hidden;
+
+            Grid.SetColumnSpan(buttonShuffle, 4);
+            Grid.SetColumnSpan(buttonPause, 4);
+            Grid.SetColumn(buttonPause, 0);
         }
 
         private void HideButtons()
@@ -199,6 +225,16 @@ namespace Fifteen
 
             _firstClick = true;
             _gameStart = false;
+
+            //UI
+            buttonPause.Visibility = Visibility.Hidden;
+            buttonStart.Visibility = Visibility.Visible;
+            buttonRecords.Visibility = Visibility.Visible;
+
+            Grid.SetColumnSpan(buttonRecords, 2);
+            Grid.SetColumn(buttonRecords, 2);
+
+            Grid.SetColumnSpan(buttonShuffle, 2);
         }
 
         private void EnabledGameButtons(bool flag) //true - enabled, false - disabled
@@ -258,10 +294,27 @@ namespace Fifteen
             if (_pauseFlag)
             {
                 Pause();
+
+                //UI
+                buttonShuffle.Visibility = Visibility.Hidden;
+                buttonRecords.Visibility = Visibility.Visible;
+
+                buttonPause.Background = new SolidColorBrush(Color.FromRgb(168, 212, 185));
+                buttonPause.Foreground = new SolidColorBrush(Color.FromRgb(34,156,45));
+
+                Grid.SetColumnSpan(buttonRecords,4);
+                Grid.SetColumn(buttonRecords,0);
             }
             else
             {
                 Continue();
+
+                //UI
+                buttonShuffle.Visibility = Visibility.Visible;
+                buttonRecords.Visibility = Visibility.Hidden;
+
+                buttonPause.Background = new SolidColorBrush(Color.FromRgb(253, 241, 134));
+                buttonPause.Foreground = new SolidColorBrush(Color.FromRgb(114, 139, 117));
             }
         }
 
@@ -294,6 +347,16 @@ namespace Fifteen
             if (_gameStart)
             {
                 Pause();
+
+                //UI
+                buttonShuffle.Visibility = Visibility.Hidden;
+                buttonRecords.Visibility = Visibility.Visible;
+
+                buttonPause.Background = new SolidColorBrush(Color.FromRgb(168, 212, 185));
+                buttonPause.Foreground = new SolidColorBrush(Color.FromRgb(34, 156, 45));
+
+                Grid.SetColumnSpan(buttonRecords, 4);
+                Grid.SetColumn(buttonRecords, 0);
             }
         }
 
