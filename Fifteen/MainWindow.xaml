@@ -6,10 +6,9 @@
         xmlns:local="clr-namespace:Fifteen"
         mc:Ignorable="d"
         Title="" Height="690" Width="450" FontSize="72" FontFamily="Bahnschrift Light" Background="White" Icon="/icon.ico" WindowStartupLocation="CenterScreen" Cursor="Hand" MinHeight="690" MinWidth="450" Deactivated="Fifteen_Deactivated">
-    <Window.Resources>
-        <Color x:Key="FirstRowGradient">#FF5E48BF</Color>
-    </Window.Resources>
+    
     <Grid x:Name="LayoutRoot" Background="White" Margin="1">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition Height="60" />
@@ -26,158 +25,78 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonShuffle" Grid.ColumnSpan="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" Background="#BFFADADD" Padding="0,7,0,0" Foreground="#FFCF2361" FontSize="40" IsTabStop="False" Click="buttonShuffle_Click" Content="⬆⬇Shuffle">
-            <Button.FocusVisualStyle>
-                <Style/>
-            </Button.FocusVisualStyle>
-        </Button>
-        <Button x:Name="buttonRecords" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" Background="#BF8DBDD8" Padding="0,7,0,0" Foreground="#FF215370" FontSize="40" IsTabStop="False" Click="buttonRecords_Click" Content="♕Records">
-            <Button.FocusVisualStyle>
-                <Style/>
-            </Button.FocusVisualStyle>
-        </Button>
-        <Button x:Name="buttonStart" Grid.ColumnSpan="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,5,0,0" Foreground="#FF229C2D" FontSize="40" IsTabStop="False" Click="buttonStart_Click" Background="#BF8BC5A1" Content="▶ Start">
-            <Button.FocusVisualStyle>
-                <Style/>
-            </Button.FocusVisualStyle>
-        </Button>
-        <Button x:Name="buttonPause" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" Padding="0,5,0,0" Foreground="#FF8D8B75" FontSize="40" IsTabStop="False" Background="#BFFBEC5D" Content="𝅛𝅛 Pause" Click="buttonPause_Click">
-            <Button.FocusVisualStyle>
-                <Style/>
-            </Button.FocusVisualStyle>
-        </Button>
-        <Button x:Name="b00" Grid.Column="0" Grid.Row="2" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.FocusVisualStyle>
-                <Style/>
-            </Button.FocusVisualStyle>
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFB82ACF"/>
-                    <GradientStop Color="{DynamicResource FirstRowGradient}" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 1
-        </Button>
-        <Button x:Name="b10" Grid.Column="1" Grid.Row="2" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFB82ACF"/>
-                    <GradientStop Color="{DynamicResource FirstRowGradient}" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 2
-        </Button>
-        <Button x:Name="b20" Grid.Column="2" Grid.Row="2" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFB82ACF"/>
-                    <GradientStop Color="{DynamicResource FirstRowGradient}" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 3
-        </Button>
-        <Button x:Name="b30" Grid.Column="3" Grid.Row="2" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFB82ACF"/>
-                    <GradientStop Color="{DynamicResource FirstRowGradient}" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 4
-        </Button>
-        <Button x:Name="b01" Grid.Column="0" Grid.Row="3" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF0E3E83"/>
-                    <GradientStop Color="#FF59CF69" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 5
-        </Button>
-        <Button x:Name="b11" Grid.Column="1" Grid.Row="3" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF0E3E83"/>
-                    <GradientStop Color="#FF59CF69" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 6
-        </Button>
-        <Button x:Name="b21" Grid.Column="2" Grid.Row="3" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF0E3E83"/>
-                    <GradientStop Color="#FF59CF69" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 7
-        </Button>
-        <Button x:Name="b31" Grid.Column="3" Grid.Row="3" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF0E3E83"/>
-                    <GradientStop Color="#FF59CF69" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 8
-        </Button>
-        <Button x:Name="b02" Grid.Column="0" Grid.Row="4" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFC96489"/>
-                    <GradientStop Color="#FFF7E050" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 9
-        </Button>
-        <Button x:Name="b12" Grid.Column="1" Grid.Row="4" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFC96489"/>
-                    <GradientStop Color="#FFF7E050" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 10
-        </Button>
-        <Button x:Name="b22" Grid.Column="2" Grid.Row="4" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFC96489"/>
-                    <GradientStop Color="#FFF7E050" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 11
-        </Button>
-        <Button x:Name="b32" Grid.Column="3" Grid.Row="4" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFC96489"/>
-                    <GradientStop Color="#FFF7E050" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 12
-        </Button>
-        <Button x:Name="b03" Grid.Column="0" Grid.Row="5" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF539BC3"/>
-                    <GradientStop Color="#FFDA9999" Offset="0.993"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 13
-        </Button>
-        <Button x:Name="b13" Grid.Column="1" Grid.Row="5" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF539BC3"/>
-                    <GradientStop Color="#FFDA9999" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 14
-        </Button>
-        <Button x:Name="b23" Grid.Column="2" Grid.Row="5" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF539BC3"/>
-                    <GradientStop Color="#FFDA9999" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground> 15
-        </Button>
-        <Button x:Name="b33" Grid.Column="3" Grid.Row="5" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" Padding="0,12,0,0" IsTabStop="False" Click="b_Click">
-            <Button.Foreground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF539BC3"/>
-                    <GradientStop Color="#FFDA9999" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Foreground>
-        </Button>
-        <Label x:Name="labelTime" Content="00:00" Grid.ColumnSpan="4" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0,7,0,0" FontSize="42"></Label>
-        <Label x:Name="labelMoves" Content="0" Grid.ColumnSpan="4" Grid.Row="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0,7,0,0" FontSize="42"></Label>
+        
+        <Button x:Name="ButtonShuffle" Grid.ColumnSpan="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" 
+                Background="{DynamicResource ButtonShuffleBackground}" 
+                Padding="0,7,0,0" Foreground="{DynamicResource ButtonShuffleForeground}" 
+                FontSize="40" IsTabStop="False" Click="buttonShuffle_Click" Content="⬆⬇Shuffle" />
+        
+        <Button x:Name="ButtonRecords" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" Margin="1" BorderBrush="{x:Null}" 
+                Background="{DynamicResource ButtonRecordsBackground}" 
+                Padding="0,7,0,0" Foreground="{DynamicResource ButtonRecordsForeground}" FontSize="40" IsTabStop="False" Click="buttonRecords_Click" Content="♕Records" />
+        
+        <Button x:Name="ButtonStart" Grid.ColumnSpan="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" 
+                Padding="0,5,0,0" Foreground="{DynamicResource ButtonStartForeground}" 
+                FontSize="40" IsTabStop="False" Click="buttonStart_Click" Background="{DynamicResource ButtonStartBackground}" Content="▶ Start" />
+        
+        <Button x:Name="ButtonPause" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="0" Margin="1" BorderBrush="{x:Null}" 
+                Padding="0,5,0,0" Foreground="{DynamicResource ButtonPauseForeground}" 
+                FontSize="40" IsTabStop="False" Background="{DynamicResource ButtonPauseBackground}" Content="𝅛𝅛 Pause" Click="buttonPause_Click" />
+        
+        
+
+        <Button x:Name="B00" Grid.Column="0" Grid.Row="2" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource FirstRowGradient}" Content="1"/>
+
+        <Button x:Name="B10" Grid.Column="1" Grid.Row="2" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource FirstRowGradient}" Content="2"/>
+        
+        <Button x:Name="B20" Grid.Column="2" Grid.Row="2" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource FirstRowGradient}" Content="3"/>
+        
+        <Button x:Name="B30" Grid.Column="3" Grid.Row="2" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource FirstRowGradient}" Content="4"/>
+        
+        <Button x:Name="B01" Grid.Column="0" Grid.Row="3" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource SecondRowGradient}" Content="5"/>
+        
+        <Button x:Name="B11" Grid.Column="1" Grid.Row="3" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource SecondRowGradient}" Content="6"/>
+        
+        <Button x:Name="B21" Grid.Column="2" Grid.Row="3" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource SecondRowGradient}" Content="7"/>
+        
+        <Button x:Name="B31" Grid.Column="3" Grid.Row="3" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource SecondRowGradient}" Content="8"/>
+        
+        <Button x:Name="B02" Grid.Column="0" Grid.Row="4" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource ThirdRowGradient}" Content="9"/>
+        
+        <Button x:Name="B12" Grid.Column="1" Grid.Row="4" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource ThirdRowGradient}" Content="10"/>
+        
+        <Button x:Name="B22" Grid.Column="2" Grid.Row="4" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource ThirdRowGradient}" Content="11"/>
+        
+        <Button x:Name="B32" Grid.Column="3" Grid.Row="4" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource ThirdRowGradient}" Content="12"/>
+        
+        <Button x:Name="B03" Grid.Column="0" Grid.Row="5" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource FourthRowGradient}" Content="13"/>
+        
+        <Button x:Name="B13" Grid.Column="1" Grid.Row="5" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource FourthRowGradient}" Content="14"/>
+        
+        <Button x:Name="B23" Grid.Column="2" Grid.Row="5" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource FourthRowGradient}" Content="15"/>
+        
+        <Button x:Name="B33" Grid.Column="3" Grid.Row="5" Margin="1" BorderBrush="{x:Null}" Background="#7FDDDDDD" 
+                Padding="0,12,0,0" IsTabStop="False" Click="b_Click" Foreground="{DynamicResource FourthRowGradient}" Content=""/>
+        
+
+        <Label x:Name="LabelTime" Content="00:00" Grid.ColumnSpan="4" Grid.Row="1" HorizontalAlignment="Center" 
+               VerticalAlignment="Center" Padding="0,7,0,0" FontSize="42" />
+        <Label x:Name="LabelMoves" Content="0" Grid.ColumnSpan="4" Grid.Row="6"  HorizontalAlignment="Center" 
+               VerticalAlignment="Center" Padding="0,7,0,0" FontSize="42" />
     </Grid>
 </Window>

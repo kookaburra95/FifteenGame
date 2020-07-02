@@ -36,18 +36,18 @@ namespace Fifteen
             _game = new Game(Size); 
             HideButtons();
             
-            buttonShuffle.IsEnabled = false;
-            buttonPause.IsEnabled = false;
+            ButtonShuffle.IsEnabled = false;
+            ButtonPause.IsEnabled = false;
 
             _timer.Tick += timer_Tick;
             _timer.Interval = new TimeSpan(0, 0, 0, 0, 1);
 
             //UI
-            buttonPause.Visibility = Visibility.Hidden;
-            buttonShuffle.Visibility = Visibility.Hidden;
-            Grid.SetColumnSpan(buttonStart, 4);
-            Grid.SetColumnSpan(buttonRecords, 4);
-            Grid.SetColumn(buttonRecords,0);
+            ButtonPause.Visibility = Visibility.Hidden;
+            ButtonShuffle.Visibility = Visibility.Hidden;
+            Grid.SetColumnSpan(ButtonStart, 4);
+            Grid.SetColumnSpan(ButtonRecords, 4);
+            Grid.SetColumn(ButtonRecords,0);
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace Fifteen
             {
                 TimeSpan timeSpan = _stopwatch.Elapsed;
                 _currentTime = $"{timeSpan.Minutes:00}:{timeSpan.Seconds:00}";
-                labelTime.Content = _currentTime;
+                LabelTime.Content = _currentTime;
             }
         }
 
@@ -83,7 +83,7 @@ namespace Fifteen
 
                 _firstClick = false;
 
-                buttonPause.IsEnabled = true;
+                ButtonPause.IsEnabled = true;
             }
 
             if (_game.IsSolved())
@@ -96,11 +96,11 @@ namespace Fifteen
 
                 _gameStart = false;
 
-                labelMoves.Content = $"You win, {_game.Moves} moves!";
-                buttonStart.IsEnabled = false;
+                LabelMoves.Content = $"You win, {_game.Moves} moves!";
+                ButtonStart.IsEnabled = false;
                 EnabledGameButtons(false);
 
-                buttonPause.IsEnabled = false;
+                ButtonPause.IsEnabled = false;
 
 
                 NameWindow nw = new NameWindow();
@@ -138,11 +138,11 @@ namespace Fifteen
                     }
 
                     //UI
-                    buttonRecords.Visibility = Visibility.Visible;
-                    Grid.SetColumnSpan(buttonRecords, 2);
-                    Grid.SetColumn(buttonRecords, 2);
+                    ButtonRecords.Visibility = Visibility.Visible;
+                    Grid.SetColumnSpan(ButtonRecords, 2);
+                    Grid.SetColumn(ButtonRecords, 2);
 
-                    Grid.SetColumnSpan(buttonShuffle, 2);
+                    Grid.SetColumnSpan(ButtonShuffle, 2);
                 }
             }   
         }
@@ -154,28 +154,28 @@ namespace Fifteen
                 _game.Start();
                 ShowButtons();
                 ColoredGameButtons();
-                buttonShuffle.IsEnabled = true;
+                ButtonShuffle.IsEnabled = true;
                 _firstGame = false;
             }
 
-            buttonStart.IsEnabled = false;
+            ButtonStart.IsEnabled = false;
             EnabledGameButtons(true);
-            buttonPause.IsEnabled = true;
+            ButtonPause.IsEnabled = true;
 
             _gameStart = true;
 
             //UI
-            buttonPause.Visibility = Visibility.Visible;
-            buttonShuffle.Visibility = Visibility.Visible;
+            ButtonPause.Visibility = Visibility.Visible;
+            ButtonShuffle.Visibility = Visibility.Visible;
 
-            buttonStart.Visibility = Visibility.Hidden;
-            buttonRecords.Visibility = Visibility.Hidden;
+            ButtonStart.Visibility = Visibility.Hidden;
+            ButtonRecords.Visibility = Visibility.Hidden;
 
-            buttonPause.IsEnabled = false;
+            ButtonPause.IsEnabled = false;
 
-            Grid.SetColumnSpan(buttonShuffle, 4);
-            Grid.SetColumnSpan(buttonPause, 4);
-            Grid.SetColumn(buttonPause, 0);
+            Grid.SetColumnSpan(ButtonShuffle, 4);
+            Grid.SetColumnSpan(ButtonPause, 4);
+            Grid.SetColumn(ButtonPause, 0);
         }
 
         private void HideButtons()
@@ -199,12 +199,12 @@ namespace Fifteen
                 }
             }
 
-            labelMoves.Content = $"{_game.Moves}";
+            LabelMoves.Content = $"{_game.Moves}";
         }
 
         private void ShowDigitAt(int digit, int x, int y)
         {
-            var button = (Button) this.FindName("b" + x + y);
+            var button = (Button) this.FindName("B" + x + y);
 
             if (digit == 0)
             {
@@ -223,38 +223,30 @@ namespace Fifteen
             _game.Shuffle();
             ShowButtons();
             ColoredGameButtons();
-            buttonStart.IsEnabled = true;
+            ButtonStart.IsEnabled = true;
             EnabledGameButtons(false);
-            buttonPause.IsEnabled = false;
+            ButtonPause.IsEnabled = false;
 
             _stopwatch.Reset();
-            labelTime.Content = "00:00";
+            LabelTime.Content = "00:00";
 
             _firstClick = true;
             _gameStart = false;
 
             //UI
-            buttonPause.Visibility = Visibility.Hidden;
-            buttonStart.Visibility = Visibility.Visible;
-            buttonRecords.Visibility = Visibility.Visible;
+            ButtonPause.Visibility = Visibility.Hidden;
+            ButtonStart.Visibility = Visibility.Visible;
+            ButtonRecords.Visibility = Visibility.Visible;
 
-            Grid.SetColumnSpan(buttonRecords, 2);
-            Grid.SetColumn(buttonRecords, 2);
+            Grid.SetColumnSpan(ButtonRecords, 2);
+            Grid.SetColumn(ButtonRecords, 2);
 
-            Grid.SetColumnSpan(buttonShuffle, 2);
+            Grid.SetColumnSpan(ButtonShuffle, 2);
         }
 
         private void EnabledGameButtons(bool flag) //true - enabled, false - disabled
         {
-            var buttons = new List<Button>()
-            {
-                b00, b01, b02, b03,
-                b10, b11, b12, b13,
-                b20, b21, b22, b23,
-                b30, b31, b32, b33
-            };
-
-            foreach (var button in buttons) 
+            foreach (var button in GetGameButtons()) 
             {
                 if (flag)
                 {
@@ -269,15 +261,7 @@ namespace Fifteen
 
         private void VisibleGameButtons(bool flag) //true - enabled, false - disabled
         {
-            var buttons = new List<Button>()
-            {
-                b00, b01, b02, b03,
-                b10, b11, b12, b13,
-                b20, b21, b22, b23,
-                b30, b31, b32, b33
-            };
-
-            foreach (var button in buttons)
+            foreach (var button in GetGameButtons())
             {
                 if (flag)
                 {
@@ -298,51 +282,14 @@ namespace Fifteen
 
         private void ColoredGameButtons()
         {
-            var buttons = new List<Button>()
-            {
-                b00, b01, b02, b03,
-                b10, b11, b12, b13,
-                b20, b21, b22, b23,
-                b30, b31, b32, b33
-            };
-
-            LinearGradientBrush firstColor = new LinearGradientBrush(
-
-                Color.FromRgb(184,42,207),
-                Color.FromRgb(94,72,191),
-                new Point(0.5,0),
-                new Point(0.5,1));
-
-            LinearGradientBrush secondColor = new LinearGradientBrush(
-
-                Color.FromRgb(14, 62, 131),
-                Color.FromRgb(89, 207, 105),
-                new Point(0.5, 0),
-                new Point(0.5, 1));
-
-            LinearGradientBrush thirdColor = new LinearGradientBrush(
-
-                Color.FromRgb(201, 100, 137),
-                Color.FromRgb(247, 224, 80),
-                new Point(0.5, 0),
-                new Point(0.5, 1));
-
-            LinearGradientBrush fourthColor = new LinearGradientBrush(
-
-                Color.FromRgb(83, 155, 195),
-                Color.FromRgb(218, 153, 153),
-                new Point(0.5, 0),
-                new Point(0.5, 1));
-
-
-            foreach (var button in buttons)
+            foreach (var button in GetGameButtons())
             {
                 switch (button.Content)
                 {
-                    case "1": case "2": case "3": case "4": button.Foreground = firstColor; break;
-                    case "5": case "6": case "7": case "8": button.Foreground = secondColor; break;
-                    case "9": case "10": case "11": case "12": button.Foreground = thirdColor; break;
-                    case "13": case "14": case "15": case "": button.Foreground = fourthColor; break;
+                    case "1": case "2": case "3": case "4": button.Foreground = (LinearGradientBrush)TryFindResource("FirstRowGradient"); break;
+                    case "5": case "6": case "7": case "8": button.Foreground = (LinearGradientBrush)TryFindResource("SecondRowGradient"); break;
+                    case "9": case "10": case "11": case "12": button.Foreground = (LinearGradientBrush)TryFindResource("ThirdRowGradient"); break;
+                    case "13": case "14": case "15": case "": button.Foreground = (LinearGradientBrush)TryFindResource("FourthRowGradient"); break;
                 }
             }
         }
@@ -354,33 +301,33 @@ namespace Fifteen
                 Pause();
 
                 //UI
-                buttonShuffle.Visibility = Visibility.Hidden;
-                buttonRecords.Visibility = Visibility.Visible;
+                ButtonShuffle.Visibility = Visibility.Hidden;
+                ButtonRecords.Visibility = Visibility.Visible;
 
-                buttonPause.Background = new SolidColorBrush(Color.FromRgb(168, 212, 185));
-                buttonPause.Foreground = new SolidColorBrush(Color.FromRgb(34,156,45));
+                ButtonPause.Background = (SolidColorBrush) TryFindResource("ButtonStartBackground");
+                ButtonPause.Foreground = (SolidColorBrush) TryFindResource("ButtonStartForeground");
 
-                Grid.SetColumnSpan(buttonRecords,4);
-                Grid.SetColumn(buttonRecords,0);
+                Grid.SetColumnSpan(ButtonRecords,4);
+                Grid.SetColumn(ButtonRecords,0);
             }
             else
             {
                 Continue();
 
                 //UI
-                buttonShuffle.Visibility = Visibility.Visible;
-                buttonRecords.Visibility = Visibility.Hidden;
+                ButtonShuffle.Visibility = Visibility.Visible;
+                ButtonRecords.Visibility = Visibility.Hidden;
 
-                buttonPause.Background = new SolidColorBrush(Color.FromRgb(253, 241, 134));
-                buttonPause.Foreground = new SolidColorBrush(Color.FromRgb(114, 139, 117));
+                ButtonPause.Background = (SolidColorBrush) TryFindResource("ButtonPauseBackground");
+                ButtonPause.Foreground = (SolidColorBrush) TryFindResource("ButtonPauseForeground");
             }
         }
 
         private void Pause()
         {
-            buttonPause.Content = "▶ Continue";
+            ButtonPause.Content = "▶ Continue";
             _pauseFlag = false;
-            buttonShuffle.IsEnabled = false;
+            ButtonShuffle.IsEnabled = false;
 
             _stopwatch.Stop();
 
@@ -390,9 +337,9 @@ namespace Fifteen
 
         private void Continue()
         {
-            buttonPause.Content = "𝅛𝅛 Pause";
+            ButtonPause.Content = "𝅛𝅛 Pause";
             _pauseFlag = true;
-            buttonShuffle.IsEnabled = true;
+            ButtonShuffle.IsEnabled = true;
 
             _stopwatch.Start();
 
@@ -409,14 +356,14 @@ namespace Fifteen
                     Pause();
 
                     //UI
-                    buttonShuffle.Visibility = Visibility.Hidden;
-                    buttonRecords.Visibility = Visibility.Visible;
+                    ButtonShuffle.Visibility = Visibility.Hidden;
+                    ButtonRecords.Visibility = Visibility.Visible;
 
-                    buttonPause.Background = new SolidColorBrush(Color.FromRgb(168, 212, 185));
-                    buttonPause.Foreground = new SolidColorBrush(Color.FromRgb(34, 156, 45));
+                    ButtonPause.Background = (SolidColorBrush)TryFindResource("ButtonStartBackground");
+                    ButtonPause.Foreground = (SolidColorBrush)TryFindResource("ButtonStartForeground");
 
-                    Grid.SetColumnSpan(buttonRecords, 4);
-                    Grid.SetColumn(buttonRecords, 0);
+                    Grid.SetColumnSpan(ButtonRecords, 4);
+                    Grid.SetColumn(ButtonRecords, 0);
                 }
             }
         }
@@ -449,6 +396,19 @@ namespace Fifteen
             {
                 return Application.Current.Windows.OfType<T>().Any(w => w.Name.Equals(name));
             }
+        }
+
+        private List<Button> GetGameButtons()
+        {
+            var buttons = new List<Button>()
+            {
+                B00, B01, B02, B03,
+                B10, B11, B12, B13,
+                B20, B21, B22, B23,
+                B30, B31, B32, B33
+            };
+
+            return buttons;
         }
     }
 }
