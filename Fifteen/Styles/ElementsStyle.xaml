@@ -41,7 +41,8 @@
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="BorderBrush" Value="{DynamicResource MouseOverGradient}"/>
                 <Setter Property="BorderThickness" Value="3"/>
-
+                <Setter Property="FontSize" Value="82"/>
+                <Setter Property="Padding" Value="0,4,0,0"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
