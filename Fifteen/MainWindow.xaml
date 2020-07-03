@@ -30,26 +30,30 @@
         </Grid.ColumnDefinitions>
         
         <Button x:Name="ButtonShuffle" Grid.ColumnSpan="2" Grid.Row="7" 
+                Template="{StaticResource ServiceButtonsTemplate}"
                 Style="{StaticResource ServiceButtons}"
                 Background="{DynamicResource ButtonShuffleBackground}" 
                 Foreground="{DynamicResource ButtonShuffleForeground}" 
                 Click="buttonShuffle_Click" Content="⬆⬇Shuffle"/>
         
         <Button x:Name="ButtonRecords" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="7" 
+                Template="{StaticResource ServiceButtonsTemplate}"
                 Style="{StaticResource ServiceButtons}"
                 Background="{DynamicResource ButtonRecordsBackground}" 
                 Foreground="{DynamicResource ButtonRecordsForeground}" 
-                Padding="0,7,0,0"
                 Click="buttonRecords_Click" Content="♕Records"/>
         
         <Button x:Name="ButtonStart" Grid.ColumnSpan="2" Grid.Row="0" 
+                Template="{StaticResource ServiceButtonsTemplate}"
                 Style="{StaticResource ServiceButtons}"
                 Background="{DynamicResource ButtonStartBackground}"
                 Foreground="{DynamicResource ButtonStartForeground}" 
                 Click="buttonStart_Click"  Content="▶ Start"/>
         
         <Button x:Name="ButtonPause" Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="0" 
+                
                 Style="{StaticResource ServiceButtons}"
+                Template="{StaticResource ServiceButtonsTemplate}"
                 Foreground="{DynamicResource ButtonPauseForeground}" 
                 Background="{DynamicResource ButtonPauseBackground}" 
                 Click="buttonPause_Click" Content="𝅛𝅛 Pause"/>
@@ -57,81 +61,97 @@
 
 
         <Button x:Name="B00" Grid.Column="0" Grid.Row="2" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}"
                 Foreground="{DynamicResource FirstRowGradient}"
                 Click="b_Click" Content="1"/>
 
         <Button x:Name="B10" Grid.Column="1" Grid.Row="2" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}"
                 Foreground="{DynamicResource FirstRowGradient}"
                 Click="b_Click"  Content="2"/>
 
         <Button x:Name="B20" Grid.Column="2" Grid.Row="2" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}"
                 Foreground="{DynamicResource FirstRowGradient}"
                 Click="b_Click" Content="3"/>
 
         <Button x:Name="B30" Grid.Column="3" Grid.Row="2" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}"
                 Foreground="{DynamicResource FirstRowGradient}" 
                 Click="b_Click" Content="4"/>
 
         <Button x:Name="B01" Grid.Column="0" Grid.Row="3" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}" 
                 Foreground="{DynamicResource SecondRowGradient}" 
                 Click="b_Click" Content="5"/>
 
         <Button x:Name="B11" Grid.Column="1" Grid.Row="3" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}" 
                 Foreground="{DynamicResource SecondRowGradient}" 
                 Click="b_Click" Content="6"/>
 
         <Button x:Name="B21" Grid.Column="2" Grid.Row="3" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}"
                 Foreground="{DynamicResource SecondRowGradient}" 
                 Click="b_Click" Content="7"/>
 
         <Button x:Name="B31" Grid.Column="3" Grid.Row="3" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}" 
                 Foreground="{DynamicResource SecondRowGradient}" 
                 Click="b_Click" Content="8"/>
 
         <Button x:Name="B02" Grid.Column="0" Grid.Row="4" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}" 
                 Foreground="{DynamicResource ThirdRowGradient}" 
                 Click="b_Click" Content="9"/>
 
         <Button x:Name="B12" Grid.Column="1" Grid.Row="4" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}"
                 Foreground="{DynamicResource ThirdRowGradient}" 
                 Click="b_Click" Content="10"/>
 
         <Button x:Name="B22" Grid.Column="2" Grid.Row="4" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}" 
                 Foreground="{DynamicResource ThirdRowGradient}" 
                 Click="b_Click" Content="11"/>
 
         <Button x:Name="B32" Grid.Column="3" Grid.Row="4" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}"
                 Foreground="{DynamicResource ThirdRowGradient}" 
                 Click="b_Click" Content="12"/>
 
         <Button x:Name="B03" Grid.Column="0" Grid.Row="5" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}" 
                 Foreground="{DynamicResource FourthRowGradient}" 
                 Click="b_Click" Content="13"/>
 
         <Button x:Name="B13" Grid.Column="1" Grid.Row="5" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}" 
                 Foreground="{DynamicResource FourthRowGradient}" 
                 Click="b_Click" Content="14"/>
 
         <Button x:Name="B23" Grid.Column="2" Grid.Row="5" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}"
                 Foreground="{DynamicResource FourthRowGradient}" 
                 Click="b_Click" Content="15"/>
 
         <Button x:Name="B33" Grid.Column="3" Grid.Row="5" 
+                Template="{StaticResource GameButtonsTemplate}"
                 Style="{StaticResource GameButtons}" 
                 Foreground="{DynamicResource FourthRowGradient}"
                 Click="b_Click"  Content=""/>

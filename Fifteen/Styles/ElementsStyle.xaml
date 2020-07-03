@@ -5,7 +5,7 @@
         <Setter Property="ItemsControl.Margin" Value="1"/>
         <Setter Property="ItemsControl.BorderBrush" Value="{x:Null}"/>
         <Setter Property="ItemsControl.Background" Value="#7FDDDDDD"/>
-        <Setter Property="ItemsControl.Padding" Value="0,12,0,0"/>
+        <Setter Property="ItemsControl.Padding" Value="0,8,0,0"/>
         <Setter Property="ItemsControl.IsTabStop" Value="False"/>
     </Style>
 
@@ -20,8 +20,49 @@
         <Setter Property="ItemsControl.Margin" Value="1"/>
         <Setter Property="ItemsControl.BorderBrush" Value="{x:Null}"/>
         <Setter Property="ItemsControl.Background" Value="#7FDDDDDD"/>
-        <Setter Property="ItemsControl.Padding" Value="0,5,0,0"/>
+        <Setter Property="ItemsControl.Padding" Value="0,4,0,0"/>
         <Setter Property="ItemsControl.IsTabStop" Value="False"/>
         <Setter Property="ItemsControl.FontSize" Value="40"/>
     </Style>
+
+    <ControlTemplate TargetType="Button" x:Key="GameButtonsTemplate">
+        <Border x:Name="buttonBorder" CornerRadius="15"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}" >
+            <ContentControl Margin="{TemplateBinding Padding}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Content="{TemplateBinding Content}" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="BorderBrush" Value="{DynamicResource MouseOverGradient}"/>
+                <Setter Property="BorderThickness" Value="3"/>
+
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate TargetType="Button" x:Key="ServiceButtonsTemplate">
+        <Border x:Name="buttonBorder" CornerRadius="5"               
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}" >
+            <ContentControl Margin="{TemplateBinding Padding}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Content="{TemplateBinding Content}" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="BorderBrush" Value="{DynamicResource MouseOverGradient}"/>
+                <Setter Property="BorderThickness" Value="3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>

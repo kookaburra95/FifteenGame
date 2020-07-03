@@ -33,4 +33,14 @@
 
     <SolidColorBrush x:Key="ButtonPauseBackground" Color="#BFFBEC5D"/>
     <SolidColorBrush x:Key="ButtonPauseForeground" Color="#FF8D8B75"/>
+
+    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" x:Key="MouseOverGradient">
+        <GradientStop Color="#FFEC8080" Offset="0.0"/>
+        <GradientStop Color="#FFECB757" Offset="0.17"/>
+        <GradientStop Color="#FFECEC82" Offset="0.33"/>
+        <GradientStop Color="#FF86C786" Offset="0.5"/>
+        <GradientStop Color="#FF8282CF" Offset="0.67"/>
+        <GradientStop Color="#FFA371C7" Offset="0.83"/>
+        <GradientStop Color="#FFC799C7" Offset="1.0"/>
+    </LinearGradientBrush>
 </ResourceDictionary>
