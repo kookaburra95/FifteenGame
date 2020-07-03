@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Fifteen">
+    <Style x:Key="GameButtons">
+        <Setter Property="ItemsControl.Margin" Value="1"/>
+        <Setter Property="ItemsControl.BorderBrush" Value="{x:Null}"/>
+        <Setter Property="ItemsControl.Background" Value="#7FDDDDDD"/>
+        <Setter Property="ItemsControl.Padding" Value="0,12,0,0"/>
+        <Setter Property="ItemsControl.IsTabStop" Value="False"/>
+    </Style>
+
+    <Style x:Key="LabelInfo">
+        <Setter Property="ItemsControl.HorizontalAlignment" Value="Center"/>
+        <Setter Property="ItemsControl.VerticalAlignment" Value="Center"/>
+        <Setter Property="ItemsControl.Padding" Value="0,7,0,0"/>
+        <Setter Property="ItemsControl.FontSize" Value="42"/>
+    </Style>
+
+    <Style x:Key="ServiceButtons">
+        <Setter Property="ItemsControl.Margin" Value="1"/>
+        <Setter Property="ItemsControl.BorderBrush" Value="{x:Null}"/>
+        <Setter Property="ItemsControl.Background" Value="#7FDDDDDD"/>
+        <Setter Property="ItemsControl.Padding" Value="0,5,0,0"/>
+        <Setter Property="ItemsControl.IsTabStop" Value="False"/>
+        <Setter Property="ItemsControl.FontSize" Value="40"/>
+    </Style>
+</ResourceDictionary>

@@ -6,48 +6,50 @@
         xmlns:local="clr-namespace:Fifteen"
         mc:Ignorable="d"
         Title="Records" Height="690" Width="450" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <Style x:Key="DataGridStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Padding" Value="5,4,0,0" />
+        </Style>
+    </Window.Resources>
+    
     <Grid>
+        
         <DataGrid x:Name="dgRecords" FontFamily="Bahnschrift" FontSize="16" AutoGenerateColumns="False" LoadingRow="dgRecords_LoadingRow">
+            
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="*" IsReadOnly="True">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5,4,0,0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
+
+                <DataGridTextColumn Header="Name" Width="*" IsReadOnly="True"
+                                    ElementStyle="{StaticResource DataGridStyle}">
                     <DataGridTextColumn.Binding>
                         <Binding Path="Name" />
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Moves" Width="100" IsReadOnly="True">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5,4,0,0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
+
+                <DataGridTextColumn Header="Moves" Width="100" IsReadOnly="True"
+                                    ElementStyle="{StaticResource DataGridStyle}">
                     <DataGridTextColumn.Binding>
                         <Binding Path="Moves" />
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Time" Width="150" IsReadOnly="True">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="VerticalAlignment" Value="Center" />
-                            <Setter Property="Padding" Value="5,4,0,0" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
+
+                <DataGridTextColumn Header="Time" Width="150" IsReadOnly="True"
+                                    ElementStyle="{StaticResource DataGridStyle}">
                     <DataGridTextColumn.Binding>
                         <Binding Path="Time" />
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
+                
             </DataGrid.Columns>
+            
             <DataGrid.RowHeaderTemplate>
                 <DataTemplate>
-                    <Label FontSize="16" FontFamily="Bahnschrift" Content="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}, Path=Tag}"/>
+                    <Label FontSize="16" FontFamily="Bahnschrift" 
+                           Content="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGridRow}}, Path=Tag}"/>
                 </DataTemplate>
             </DataGrid.RowHeaderTemplate>
+            
         </DataGrid> 
     </Grid>
 </Window>
