@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fifteen"
         mc:Ignorable="d"
-        Title="" Height="690" Width="450" FontSize="72" FontFamily="Bahnschrift Light" Background="White" Icon="/icon.ico" WindowStartupLocation="CenterScreen" Cursor="Hand" MinHeight="690" MinWidth="450" Deactivated="Fifteen_Deactivated">
+        Title="" Height="690" Width="450" FontSize="72" FontFamily="Bahnschrift Light" 
+        Background="White"
+        WindowStartupLocation="CenterScreen" Cursor="Hand" 
+        MinHeight="690" MinWidth="450" Deactivated="Fifteen_Deactivated">
     
     <Grid x:Name="LayoutRoot" Background="White" Margin="1">
         
