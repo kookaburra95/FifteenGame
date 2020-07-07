@@ -27,14 +27,14 @@
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="Moves" Width="100" IsReadOnly="True"
+                <DataGridTextColumn Header="Moves" Width="75" IsReadOnly="True"
                                     ElementStyle="{StaticResource DataGridStyle}">
                     <DataGridTextColumn.Binding>
                         <Binding Path="Moves" />
                     </DataGridTextColumn.Binding>
                 </DataGridTextColumn>
 
-                <DataGridTextColumn Header="Time" Width="150" IsReadOnly="True"
+                <DataGridTextColumn Header="Time" Width="100" IsReadOnly="True"
                                     ElementStyle="{StaticResource DataGridStyle}">
                     <DataGridTextColumn.Binding>
                         <Binding Path="Time" />
