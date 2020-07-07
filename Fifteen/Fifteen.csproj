@@ -5,6 +5,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+    <Authors>Whatislove</Authors>
+    <Company>Kookaburra</Company>
+    <Copyright>Kookaburra</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

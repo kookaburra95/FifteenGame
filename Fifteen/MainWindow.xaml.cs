@@ -85,6 +85,7 @@ namespace Fifteen
                 _firstClick = false;
 
                 ButtonPause.IsEnabled = true;
+                ButtonPause.Content = "𝅛𝅛 Pause";
             }
 
             if (_game.IsSolved())
@@ -102,6 +103,7 @@ namespace Fifteen
                 EnabledGameButtons(false);
 
                 ButtonPause.IsEnabled = false;
+                ButtonPause.Content = "CONGRATULATIONS!";
 
 
                 NameWindow nw = new NameWindow();
@@ -176,6 +178,7 @@ namespace Fifteen
             ButtonRecords.Visibility = Visibility.Hidden;
 
             ButtonPause.IsEnabled = false;
+            ButtonPause.Content = "GOOD LUCK!";
 
             Grid.SetColumnSpan(ButtonShuffle, 4);
             Grid.SetColumnSpan(ButtonPause, 4);
