@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using Fifteen.Services;
 using FifteenLibrary;
@@ -154,6 +155,9 @@ namespace Fifteen
                 _game.Start();
                 ShowButtons();
                 ColoredGameButtons();
+
+                ShuffleAnimation();
+
                 ButtonShuffle.IsEnabled = true;
                 _firstGame = false;
             }
@@ -221,8 +225,14 @@ namespace Fifteen
         private void buttonShuffle_Click(object sender, RoutedEventArgs e)
         {
             _game.Shuffle();
+
+            ShuffleAnimation();
+
             ShowButtons();
             ColoredGameButtons();
+
+            
+
             ButtonStart.IsEnabled = true;
             EnabledGameButtons(false);
             ButtonPause.IsEnabled = false;
@@ -409,6 +419,19 @@ namespace Fifteen
             };
 
             return buttons;
+        }
+
+        private void ShuffleAnimation()
+        {
+            foreach (var button in GetGameButtons())
+            {
+                var doubleAnimation = new DoubleAnimation(360, 0, new Duration(TimeSpan.FromSeconds(0.5)));
+                var rotateTransform = new RotateTransform();
+
+                button.RenderTransform = rotateTransform;
+                button.RenderTransformOrigin = new Point(0.5, 0.5);
+                rotateTransform.BeginAnimation(RotateTransform.AngleProperty, doubleAnimation);
+            }
         }
     }
 }
