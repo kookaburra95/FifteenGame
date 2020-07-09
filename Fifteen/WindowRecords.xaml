@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fifteen"
         mc:Ignorable="d"
-        Title="Records" Height="690" Width="450" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Records" Height="690" Width="450" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded" ResizeMode="NoResize">
     
     <Window.Resources>
         <Style x:Key="DataGridStyle" TargetType="TextBlock">

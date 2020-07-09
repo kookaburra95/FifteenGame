@@ -107,6 +107,7 @@ namespace Fifteen
 
 
                 NameWindow nw = new NameWindow();
+                nw.Owner = this;
 
                 if (nw.ShowDialog() == true)
                 {
@@ -137,6 +138,7 @@ namespace Fifteen
                     if (!IsWindowOpen<WindowRecords>())
                     {
                         WindowRecords records = new WindowRecords();
+                        records.Owner = this;
                         records.Show();
                     }
 
@@ -390,6 +392,7 @@ namespace Fifteen
                 if (fileExist)
                 {
                     WindowRecords records = new WindowRecords();
+                    records.Owner = this;
                     records.Show();
                 }
                 else
